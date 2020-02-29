@@ -92,6 +92,33 @@ class Cadastro(object):
                 "erro": str(e),
                 "msg": 'Cadastro não Efetuado.',
             }
+
+    def cadastrar_usuarios_completo(self, dados):
+        """
+        Cadastra usuario na base.
+        """
+        try:
+            with CadastroDBContext(engine) as db:
+
+                cad = Usuarios()
+                cad.nome = dados['nome']
+                cad.telefone = dados['numeroTelefone']
+                cad.email = dados['email']
+                cad.mensagem = dados['mensagem']
+                db.session.add(cad)
+                db.session.commit()
+
+                return {
+                    "status": True,
+                    "msg": 'Cadastro Efetuado com sucesso.'
+                }
+        
+        except Exception as e:
+            return {
+                "status": False,
+                "erro": str(e),
+                "msg": 'Cadastro não Efetuado.',
+            }
     
     def atualiza_cadastro(self, json_data):
         """

@@ -9,6 +9,13 @@ schemaCadastro = api.model('Cadastro', {
     'idade': fields.String(description='Idade')
 })
 
+schemaCadastroMsg = api.model('CadastroMsg', {
+    'nome': fields.String(description='Nome Completo'),
+    'numeroTelefone': fields.String(description='Número do telefone.'),
+    'email': fields.String(description='Email'),
+    'mensagem': fields.String(description='Mensagem')
+})
+
 schemaUpdate = api.model('Update', {
     'id_usuario': fields.String(description='ID'),
     'nome': fields.String(description='Nome Completo'),

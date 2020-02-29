@@ -1,7 +1,7 @@
 from flask_restplus import Resource
 from flask import request, jsonify
 from crud.api import api
-from crud.api.cadastro.schemas import schemaCadastro, schemaConsulta, schemaDelete, schemaUpdate
+from crud.api.cadastro.schemas import schemaCadastro, schemaConsulta, schemaDelete, schemaUpdate, schemaCadastroMsg
 from crud.api.cadastro.cad import Cadastro
 import logging
 import json
@@ -26,6 +26,21 @@ class Create(Resource):
         r = Cadastro()
         r.dados_cadastro(dados)
         res = r.cadastrar_usuarios()
+
+        return res
+
+@ns.route('/cadastrar/mensagem')
+class CreateMsg(Resource):
+    @ns.response(code=400, description="Bad Request")
+    @ns.expect(schemaCadastroMsg, validate=True)
+    def post(self):
+        """
+        Faz um cadastro simples na base de dados
+        """
+
+        dados = request.json
+        r = Cadastro()
+        res = r.cadastrar_usuarios_completo(dados)
 
         return res
 
