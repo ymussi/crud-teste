@@ -1,0 +1,5 @@
+__pycache__
+crud/__pycache__
+crud/api/cadastro/__pycache__
+crud/database/__pycache__
+exemplo_crud.egg-info
