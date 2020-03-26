@@ -1,0 +1,13 @@
+version: '3.6'
+services:
+  web:
+    build:
+        context: .
+        args: 
+            RUN_ENVIRONMENT: develop
+    working_dir: /app/crud
+    entrypoint: "uwsgi --ini /app/crud/app.ini"
+    volumes:
+        - .:/app/crud
+    ports:
+        - "5000:5000"

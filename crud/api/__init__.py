@@ -2,8 +2,8 @@ import logging
 import os
 
 from flask_restplus import Api as _Api
-from flask_restplus import reqparse as _reqparse
-from werkzeug.exceptions import HTTPException
+# from flask_restplus import reqparse as _reqparse
+# from werkzeug.exceptions import HTTPException
 
 log = logging.getLogger(__name__)
 
@@ -12,5 +12,3 @@ commit = v.read().replace("commit ", "")[:7]
 
 api = _Api(version='0.1#{}'.format(commit), default='',
            title='Exemplo CRUD', description='CRUD')
-
-
